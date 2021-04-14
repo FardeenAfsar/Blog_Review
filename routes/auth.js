@@ -1,18 +1,28 @@
 const express = require("express");
 const router = express.Router();
+const passport = require("passport");
 
-// @desc
-// @route   GET /
-router.get("/google", (req, res) => {
-  res.render("login", {
-    layout: "login",
-  });
-});
+// @desc    Google auth
+// @route   GET /auth/google
+router.get("/google", passport.authenticate("google", { scope: ["profile"] }));
 
-// @desc    Home Page
-// @route   GET /home
-router.get("/home", (req, res) => {
-  res.render("home");
+// @desc    Google auth callback
+// @route   GET /auth/google/callback
+router.get(
+  "/google/callback",
+  passport.authenticate("google", {
+    failureRedirect: "/",
+  }),
+  (req, res) => {
+    res.redirect("/home");
+  }
+);
+
+// @desc    Logout User
+// @route   GET /logout
+router.get("/logout", (req, res) => {
+  req.logout();
+  res.redirect("/");
 });
 
 module.exports = router;

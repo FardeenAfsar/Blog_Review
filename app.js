@@ -4,9 +4,14 @@ const dotenv = require("dotenv");
 const exphbs = require("express-handlebars");
 const morgan = require("morgan");
 const connectDB = require("./config/db");
+const passport = require("passport");
+const session = require("express-session");
 
 // Load environment variables using dotenv
 dotenv.config({ path: "./config/config.env" });
+
+// Load passport config
+require("./config/passport")(passport);
 
 // Connect DB
 connectDB();
@@ -27,6 +32,19 @@ app.engine(
   })
 );
 app.set("view engine", ".hbs");
+
+// Sessions
+app.use(
+  session({
+    secret: "keyboard cat",
+    resave: false,
+    saveUninitialized: false,
+  })
+);
+
+// Passport middleware
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Routes
 app.use("/", require("./routes/index"));
