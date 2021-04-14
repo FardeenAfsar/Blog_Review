@@ -2,11 +2,17 @@ const path = require("path");
 const express = require("express");
 const dotenv = require("dotenv");
 const exphbs = require("express-handlebars");
+const morgan = require("morgan");
 
 // Load environment variables using dotenv
 dotenv.config({ path: "./config/config.env" });
 
 const app = express();
+
+// Logger
+if (process.env.NODE_ENV == "development") {
+  app.use(morgan("dev"));
+}
 
 // View engine
 app.engine(
