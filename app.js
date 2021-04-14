@@ -3,9 +3,13 @@ const express = require("express");
 const dotenv = require("dotenv");
 const exphbs = require("express-handlebars");
 const morgan = require("morgan");
+const connectDB = require("./config/db");
 
 // Load environment variables using dotenv
 dotenv.config({ path: "./config/config.env" });
+
+// Connect DB
+connectDB();
 
 const app = express();
 
@@ -26,6 +30,7 @@ app.set("view engine", ".hbs");
 
 // Routes
 app.use("/", require("./routes/index"));
+app.use("/auth", require("./routes/auth"));
 
 const PORT = process.env.PORT || 3000;
 app.listen(

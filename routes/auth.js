@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
 
-// @desc    Landing Page
+// @desc
 // @route   GET /
-router.get("/", (req, res) => {
+router.get("/google", (req, res) => {
   res.render("login", {
     layout: "login",
   });
