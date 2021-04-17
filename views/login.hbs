@@ -1,7 +1,36 @@
-<div class="card-header">Blog-Review</div>
+<div class="card-header">
+    <ul class="nav nav-pills card-header-pills nav-fill">
+        <li class="nav-item">
+            <a class="nav-link active btn-outline-dark">Login</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/signup">Signup</a>
+        </li>
+    </ul>
+</div>
 <div class="card-body">
-    <h3 class="card-title">Login/Signup</h3>
-    <p class="card-text">Login or Signup to Blog-Review using Gmail</p>
+    <h3 class="card-title">Login</h3>
+    <form>
+        <div class="form-row justify-content-center my-4">
+            <div class="col-8">
+                <input type="text" class="form-control" placeholder="Email">
+            </div>
+        </div>
+        <div class="form-row justify-content-center my-4">
+            <div class="col-8">
+                <input type="text" class="form-control" placeholder="Password">
+            </div>
+        </div>
+        <div class="form-row justify-content-center my-4">
+            <div class="col-8">
+                <button type="submit" class="btn btn-block btn-outline-dark">Login</button>
+            </div>
+        </div>
+
+    </form>
+
+    <hr class="mt-4" />
+
     <a href="/auth/google" class="btn btn-outline-danger btn-lg" role="button">
         <i class="fab fa-google fa-lg"></i>
         <i class="fas fa-plus fa-lg"></i>
