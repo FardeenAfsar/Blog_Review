@@ -18,6 +18,10 @@ connectDB();
 
 const app = express();
 
+// Body parse
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+
 // Logger
 if (process.env.NODE_ENV == "development") {
   app.use(morgan("dev"));

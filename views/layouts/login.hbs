@@ -25,6 +25,7 @@
     <div class="container-fluid h-100">
         <div class="row align-items-center justify-content-center h-100">
             <div class="col-md-10 col-lg-5 mb-5">
+                {{> _alert}}
                 <div class="card text-center mb-5">
                     {{{body}}}
                 </div>
@@ -43,6 +44,47 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta3/js/bootstrap.min.js"
         integrity="sha512-mp3VeMpuFKbgxm/XMUU4QQUcJX4AZfV5esgX72JQr7H7zWusV6lLP1S78wZnX2z9dwvywil1VHkHZAqfGOW7Nw=="
         crossorigin="anonymous"></script>
+
+    {{!-- Password validator --}}
+    <script>
+        (function () {
+            "use strict";
+            var p1 = document.getElementById("password");
+            var p2 = document.getElementById("confirm_password");
+            p2.addEventListener("input", function (event) {
+                fieldValidator(event, p2.value == p1.value);
+            });
+            function fieldValidator(event, condition) {
+                if (!condition) {
+                    event.target.setCustomValidity("invalid");
+                } else {
+                    event.target.setCustomValidity("");
+                }
+            }
+            window.addEventListener(
+                "load",
+                function () {
+                    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                    var forms = document.getElementsByClassName("needs-validation");
+                    // Loop over them and prevent submission
+                    var validation = Array.prototype.filter.call(forms, function (form) {
+                        form.addEventListener(
+                            "submit",
+                            function (event) {
+                                if (form.checkValidity() === false) {
+                                    event.preventDefault();
+                                    event.stopPropagation();
+                                }
+                                form.classList.add("was-validated");
+                            },
+                            false
+                        );
+                    });
+                },
+                false
+            );
+        })();
+    </script>
 
 </body>
 
