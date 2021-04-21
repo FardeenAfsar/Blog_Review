@@ -47,14 +47,14 @@
 
     {{!-- Password validator --}}
     <script>
-        (function () {
+        (() => {
             "use strict";
             var p1 = document.getElementById("password");
             var p2 = document.getElementById("confirm_password");
-            p2.addEventListener("input", function (event) {
+            p2.addEventListener("input", event => {
                 fieldValidator(event, p2.value == p1.value);
             });
-            function fieldValidator(event, condition) {
+            const fieldValidator = (event, condition) => {
                 if (!condition) {
                     event.target.setCustomValidity("invalid");
                 } else {
@@ -63,14 +63,14 @@
             }
             window.addEventListener(
                 "load",
-                function () {
+                () => {
                     // Fetch all the forms we want to apply custom Bootstrap validation styles to
                     var forms = document.getElementsByClassName("needs-validation");
                     // Loop over them and prevent submission
-                    var validation = Array.prototype.filter.call(forms, function (form) {
+                    var validation = Array.prototype.filter.call(forms, form => {
                         form.addEventListener(
                             "submit",
-                            function (event) {
+                            event => {
                                 if (form.checkValidity() === false) {
                                     event.preventDefault();
                                     event.stopPropagation();
