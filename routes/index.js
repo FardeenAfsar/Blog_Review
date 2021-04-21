@@ -1,13 +1,24 @@
 const express = require("express");
 const router = express.Router();
-const { ensureAuth, ensureGuest } = require("../middleware/auth");
+const passport = require("passport");
+
+const { ensureAuth, ensureGuest, validateAuth } = require("../middleware/auth");
 
 // @desc    Landing Page
 // @route   GET /
 router.get("/", ensureGuest, (req, res) => {
-  res.render("login", {
-    layout: "login",
-  });
+  if (req.session.alert) {
+    res.render("login", {
+      layout: "login",
+      alert: req.session.alert,
+    });
+  } else {
+    res.render("login", {
+      layout: "login",
+    });
+  }
+
+  req.session.alert = null;
 });
 
 // @desc    Home Page
@@ -15,5 +26,18 @@ router.get("/", ensureGuest, (req, res) => {
 router.get("/home", ensureAuth, (req, res) => {
   res.render("home");
 });
+
+// @desc    Process login and signup form
+// @route   POST /
+router.post(
+  "/",
+  validateAuth,
+  passport.authenticate("local", {
+    failureRedirect: "/",
+  }),
+  (req, res) => {
+    res.redirect("/home");
+  }
+);
 
 module.exports = router;
