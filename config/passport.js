@@ -1,6 +1,7 @@
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const LocalStrategy = require("passport-local").Strategy;
 const User = require("../models/User");
+const bcrypt = require("bcrypt");
 
 module.exports = (passport) => {
   passport.use(
@@ -39,10 +40,13 @@ module.exports = (passport) => {
         usernameField: "username",
       },
       async (username, password, done) => {
+        const salt = await bcrypt.genSalt();
+        const hashedPassword = await bcrypt.hash(password, salt);
+
         const newUser = {
           local: {
             userName: username,
-            password: password,
+            password: hashedPassword,
           },
         };
 

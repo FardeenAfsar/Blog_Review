@@ -1,4 +1,5 @@
 const User = require("../models/User");
+const bcrypt = require("bcrypt");
 
 module.exports = {
   ensureAuth: (req, res, next) => {
@@ -22,10 +23,18 @@ module.exports = {
     if (!req.body.confirm_password) {
       let user = await User.findOne({
         "local.userName": username,
-        "local.password": password,
       });
       if (user) {
-        next();
+        const passwordMatch = await bcrypt.compare(
+          password,
+          user.local.password
+        );
+        if (passwordMatch) {
+          next();
+        } else {
+          req.session["alert"] = "Username and password do not match";
+          res.redirect("/");
+        }
       } else {
         req.session["alert"] = "Username and password do not match";
         res.redirect("/");
