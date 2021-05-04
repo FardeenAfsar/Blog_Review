@@ -3,28 +3,26 @@
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-
+    <a class="navbar-brand btn btn-dark disabled ml-auto">
+        <i class="fas fa-film fa-lg"></i>
+    </a>
     <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
-        <a class="btn btn-dark disabled mr-auto">
-            <i class="fas fa-film fa-2x"></i>
-        </a>
-
-        <ul class="navbar-nav ml-5 me-auto mb-2 mb-lg-0 bd-highlight">
-            <li class="nav-item mx-4">
-                <a class="nav-link nav-link-ltr" aria-current="page" href="#">Home</a>
+        <ul class="navbar-nav ml-lg-5 me-auto mb-2 mb-lg-0">
+            <li class="nav-item mx-lg-4">
+                <a class="nav-link nav-link-ltr" aria-current="page" href="/home">Home</a>
             </li>
-            <li class="nav-item mx-4">
-                <a class="nav-link nav-link-ltr" href="#">Favorites</a>
+            <li class="nav-item mx-lg-4">
+                <a class="nav-link nav-link-ltr" href="/">Favorites</a>
             </li>
-            <li class="nav-item mx-4">
-                <a class="nav-link nav-link-ltr" href="#">Profile</a>
+            <li class="nav-item mx-lg-4">
+                <a class="nav-link nav-link-ltr" href="/profile">Profile</a>
             </li>
         </ul>
 
-        <form class="d-flex mx-5">
-            <input class="form-control mr-1" type="search" placeholder="Search" aria-label="Search">
+        <form class="d-flex mx-lg-5 mb-lg-0 mb-2">
+            <input class="form-control mr-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-secondary" type="submit">Search</button>
         </form>
-        <a href="/auth/logout" class="btn btn-outline-warning ml-auto" role="button">Logout</a>
+        <a href="/auth/logout" class="btn btn-outline-warning ml-lg-auto" role="button">Logout</a>
     </div>
 </nav>
