@@ -3,3 +3,27 @@ html {
   height: 100%;
   height: 100vh;
 }
+
+.nav-link-ltr {
+  padding: 0% !important;
+  position: relative !important;
+  font-size: 1.2rem;
+}
+
+.nav-link-ltr:hover {
+  opacity: 1 !important;
+}
+
+.nav-link-ltr::before {
+  transition: 300ms;
+  height: 0.2rem;
+  content: "";
+  position: absolute;
+  background-color: white;
+  width: 0%;
+  bottom: 0%;
+}
+
+.nav-link-ltr:hover::before {
+  width: 100%;
+}
