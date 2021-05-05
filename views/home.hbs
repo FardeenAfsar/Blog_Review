@@ -1,1 +1,20 @@
-<h3>Home</h3>
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    {{#if reviews}}
+    {{#each reviews}}
+    <div class="col">
+        <div class="card h-100">
+            <img src="http://localhost:3000/images/splash_one.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{title}}</h5>
+                <p class="card-text">{{body}}</p>
+            </div>
+            <div class="card-footer">
+                <small class="text-muted">{{user.local.userName}}</small>
+            </div>
+        </div>
+    </div>
+    {{/each}}
+    {{else}}
+    <p>No reviews</p>
+    {{/if}}
+</div>
