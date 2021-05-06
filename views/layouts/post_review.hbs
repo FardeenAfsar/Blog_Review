@@ -15,24 +15,19 @@
         integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
         crossorigin="anonymous" />
 
-    {{!-- Main css file --}}
+    {{!-- Main css --}}
     <link rel="stylesheet" href="/css/style.css">
 
-    <title>Blog-Review</title>
+    <title>Post Review</title>
 </head>
 
 <body>
-
-    {{> _navbar}}
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col">
-                {{{body}}}
-            </div>
-        </div>
-        <div class="row">
-            <div class="col d-flex">
-                {{> _add_btn}}
+    <div class="container-fluid h-100">
+        <div class="row align-items-center justify-content-center h-100">
+            <div class="col-md-10 col-lg-5 mb-5">
+                <div class="card text-center mb-5">
+                    {{{body}}}
+                </div>
             </div>
         </div>
     </div>
@@ -49,6 +44,24 @@
         integrity="sha512-mp3VeMpuFKbgxm/XMUU4QQUcJX4AZfV5esgX72JQr7H7zWusV6lLP1S78wZnX2z9dwvywil1VHkHZAqfGOW7Nw=="
         crossorigin="anonymous"></script>
 
+
+    {{!-- Tinymce --}}
+    <script src='https://cdn.tiny.cloud/1/3sr9jv5ywpqkd6xjq0xdky95r9iah8q9uqa5udmkbamkb7ms/tinymce/5/tinymce.min.js'
+        referrerpolicy="origin"></script>
+
+    <script>
+        tinymce.init({
+            selector: '#body',
+            plugins: 'lists autolink link autoresize emoticons image imagetools nonbreaking',
+            menubar: 'format',
+            toolbar: 'fontselect fontsizeselect bold italic underline formatselect alignleft aligncenter alignright numlist bullist blocks link emoticons image',
+            default_link_target: '_blank',
+            min_height: 500,
+            object_resizing: true,
+            nonbreaking_force_tab: true,
+        });
+
+    </script>
 
 </body>
 

@@ -6,7 +6,6 @@ const Review = require("../models/Review");
 const axios = require("axios");
 
 const { ensureAuth, ensureGuest, validateAuth } = require("../middleware/auth");
-const { response } = require("express");
 
 // @desc    Landing Page
 // @route   GET /
@@ -54,7 +53,9 @@ router.post(
 // @desc    Post review Page
 // @route   GET /post
 router.get("/post", ensureAuth, (req, res) => {
-  res.render("add");
+  res.render("post_review", {
+    layout: "post_review",
+  });
 });
 
 // @desc    Post review Page
