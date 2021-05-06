@@ -1,0 +1,16 @@
+<div class="row row-cols-1 row-cols-md-4 g-4">
+    {{#each data}}
+    <div class="col">
+        <div class="card h-100">
+            <img src='https://image.tmdb.org/t/p/original{{poster_path}}' class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{original_title}}</h5>
+                <p class="card-text">{{overview}}</p>
+            </div>
+            <div class="card-footer">
+                <small class="text-muted">{{release_date}}</small>
+            </div>
+        </div>
+    </div>
+    {{/each}}
+</div>
