@@ -85,17 +85,26 @@ router.post("/review", ensureAuth, async (req, res) => {
 
 // @desc    Post review Page
 // @route   GET /post
-router.post("/movie", ensureAuth, async (req, res) => {
+router.post("/movie", ensureAuth, (req, res) => {
+  res.redirect(`/movie?movie=${req.body.search}&page=1`);
+});
+
+// @desc    Post review Page
+// @route   GET /post
+router.get("/movie", ensureAuth, (req, res) => {
   axios
     .get(
-      `https://api.themoviedb.org/3/search/movie?api_key=${process.env.TMDB_API_KEY}&language=en-US&query=${req.body.search}&page=1&include_adult=false`
+      `https://api.themoviedb.org/3/search/movie?api_key=${process.env.TMDB_API_KEY}&language=en-US&query=${req.query.movie}&page=${req.query.page}&include_adult=false`
     )
     .then((response) => {
-      const data = response.data.results.sort(
-        (a, b) => parseFloat(b.popularity) - parseFloat(a.popularity)
-      );
+      const data = response.data.results.sort((a, b) => {
+        return b.popularity - a.popularity;
+      });
       res.render("movie", {
-        data: data.slice(0, 11),
+        data,
+        movie: req.query.movie,
+        page: req.query.page,
+        totalPages: response.data.total_pages,
       });
     })
     .catch((err) => {

@@ -1,4 +1,4 @@
-<div class="row row-cols-1 row-cols-md-4 g-4">
+<div class="row row-cols-1 row-cols-md-4 g-4 movie-list">
     {{#each data}}
     <div class="col">
         <a href="/post?id={{id}}">
@@ -15,4 +15,41 @@
         </a>
     </div>
     {{/each}}
+</div>
+
+<div class="row mt-3">
+    <div class="col">
+        <nav>
+            <ul class="pagination justify-content-center">
+                <li class="page-item">
+                    <a class="btn {{#stringMatch page '1'}} disabled btn-secondary {{else}} btn-outline-info {{/stringMatch}}"
+                        href="/movie?movie={{movie}}&page=1">First</a>
+                </li>
+                <li class="page-item mx-2">
+                    <a class="btn {{#stringMatch page '1'}} disabled btn-secondary {{else}} btn-outline-info {{/stringMatch}}"
+                        href="/movie?movie={{movie}}&page={{prevPage page}}">
+                        <i class="fas fa-chevron-left"></i>
+                    </a>
+                </li>
+
+                {{#paginate page totalPages}}
+                <li class="page-item d-none d-sm-block">
+                    <a class="btn mx-1 {{#if this.activePage}} btn-dark disabled {{else}} btn-outline-dark {{/if}}"
+                        href="/movie?movie={{../movie}}&page={{this.page}}">{{this.page}}</a>
+                </li>
+                {{/paginate}}
+
+                <li class="page-item mx-2">
+                    <a class="btn {{#stringMatch page totalPages}} disabled btn-secondary {{else}} btn-outline-info {{/stringMatch}}"
+                        href="/movie?movie={{movie}}&page={{nextPage page}}">
+                        <i class="fas fa-chevron-right"></i>
+                    </a>
+                </li>
+                <li class="page-item">
+                    <a class="btn {{#stringMatch page totalPages}} disabled btn-secondary {{else}} btn-outline-info {{/stringMatch}}"
+                        href="/movie?movie={{movie}}&page={{totalPages}}">Last</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
 </div>

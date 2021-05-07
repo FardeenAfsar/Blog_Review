@@ -29,10 +29,19 @@ if (process.env.NODE_ENV == "development") {
   app.use(morgan("dev"));
 }
 
+// Handlebar helper
+const { nextPage, prevPage, stringMatch, paginate } = require("./helpers/hbs");
+
 // View engine
 app.engine(
   ".hbs",
   exphbs({
+    helpers: {
+      nextPage,
+      prevPage,
+      stringMatch,
+      paginate,
+    },
     defaultLayout: "main",
     extname: ".hbs",
   })
