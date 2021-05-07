@@ -6,6 +6,7 @@ const Review = require("../models/Review");
 const axios = require("axios");
 
 const { ensureAuth, ensureGuest, validateAuth } = require("../middleware/auth");
+const { response } = require("express");
 
 // @desc    Landing Page
 // @route   GET /
@@ -55,6 +56,7 @@ router.post(
 router.get("/post", ensureAuth, (req, res) => {
   res.render("post_review", {
     layout: "post_review",
+    movieId: req.query.id,
   });
 });
 
@@ -62,8 +64,23 @@ router.get("/post", ensureAuth, (req, res) => {
 // @route   GET /post
 router.post("/review", ensureAuth, async (req, res) => {
   req.body.user = req.user.id;
-  await Review.create(req.body);
-  res.redirect("/home");
+  axios
+    .get(
+      `https://api.themoviedb.org/3/movie/${req.query.id}?api_key=${process.env.TMDB_API_KEY}&language=en-US`
+    )
+    .then((response) => {
+      req.body.movie = {
+        id: req.query.id,
+        title: response.data.original_title,
+        image: response.data.poster_path,
+      };
+      Review.create(req.body);
+      res.redirect("/home");
+    })
+    .catch((err) => {
+      console.log(err);
+      res.redirect("/home");
+    });
 });
 
 // @desc    Post review Page
@@ -71,7 +88,7 @@ router.post("/review", ensureAuth, async (req, res) => {
 router.post("/movie", ensureAuth, async (req, res) => {
   axios
     .get(
-      `https://api.themoviedb.org/3/search/movie?api_key=17d664f31d975895c103aedfbd6f445c&language=en-US&query=${req.body.search}&page=1&include_adult=false`
+      `https://api.themoviedb.org/3/search/movie?api_key=${process.env.TMDB_API_KEY}&language=en-US&query=${req.body.search}&page=1&include_adult=false`
     )
     .then((response) => {
       const data = response.data.results.sort(

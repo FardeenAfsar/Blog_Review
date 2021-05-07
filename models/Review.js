@@ -12,8 +12,17 @@ const ReviewSchema = new mongoose.Schema({
     required: true,
   },
   movie: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: User,
+    id: {
+      type: Number,
+      required: true,
+    },
+    title: {
+      type: String,
+      required: true,
+    },
+    image: {
+      type: String,
+    },
   },
   user: {
     type: mongoose.Schema.Types.ObjectId,

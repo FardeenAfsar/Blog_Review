@@ -3,9 +3,9 @@
     {{#each reviews}}
     <div class="col">
         <div class="card h-100">
-            <img src="http://localhost:3000/images/splash_one.jpg" class="card-img-top" alt="...">
+            <img src="https://image.tmdb.org/t/p/original/{{movie.image}}" class="card-img-top" alt="...">
             <div class="card-body">
-                <h5 class="card-title">{{title}}</h5>
+                <h5 class="card-title">{{movie.title}}</h5>
                 <p class="card-text">{{body}}</p>
             </div>
             <div class="card-footer">
