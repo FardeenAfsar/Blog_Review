@@ -7,7 +7,7 @@ const axios = require("axios");
 
 const { ensureAuth, ensureGuest, validateAuth } = require("../middleware/auth");
 
-// @desc    Landing Page
+// @desc    Landing auth Page
 // @route   GET /
 router.get("/", ensureGuest, (req, res) => {
   if (req.session.alert) {
@@ -50,46 +50,14 @@ router.post(
   }
 );
 
-// @desc    Post review Page
-// @route   GET /post
-router.get("/post", ensureAuth, (req, res) => {
-  res.render("post_review", {
-    layout: "post_review",
-    movieId: req.query.id,
-  });
-});
-
-// @desc    Post review Page
-// @route   GET /post
-router.post("/review", ensureAuth, async (req, res) => {
-  req.body.user = req.user.id;
-  axios
-    .get(
-      `https://api.themoviedb.org/3/movie/${req.query.id}?api_key=${process.env.TMDB_API_KEY}&language=en-US`
-    )
-    .then((response) => {
-      req.body.movie = {
-        id: req.query.id,
-        title: response.data.original_title,
-        image: response.data.poster_path,
-      };
-      Review.create(req.body);
-      res.redirect("/home");
-    })
-    .catch((err) => {
-      console.log(err);
-      res.redirect("/home");
-    });
-});
-
-// @desc    Post review Page
-// @route   GET /post
+// @desc    Post movie queries and data
+// @route   POST /movie
 router.post("/movie", ensureAuth, (req, res) => {
   res.redirect(`/movie?movie=${req.body.search}&page=1`);
 });
 
-// @desc    Post review Page
-// @route   GET /post
+// @desc    Get movie queries and display page
+// @route   GET /movie
 router.get("/movie", ensureAuth, (req, res) => {
   axios
     .get(

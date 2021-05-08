@@ -3,13 +3,23 @@
     {{#each reviews}}
     <div class="col">
         <div class="card h-100">
-            <img src="https://image.tmdb.org/t/p/original/{{movie.image}}" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">{{movie.title}}</h5>
-                <p class="card-text">{{coverDesc}}</p>
+            <div class="movie-list">
+                <a href="#">
+                    <img src="https://image.tmdb.org/t/p/original/{{movie.image}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{movie.title}}</h5>
+                        <p class="card-text">{{coverDesc}}</p>
+                    </div>
+                </a>
             </div>
-            <div class="card-footer d-flex justify-content-end">
-                <small class="text-muted"> - {{user.local.userName}}</small>
+            <div class="card-footer mt-auto d-flex justify-content-end">
+                <a href="#" class="btn btn-outline-success btn-sm mr-2" style="font-size: x-small;">
+                    3
+                </a>
+                <a href="#" class="btn btn-outline-success btn-sm mr-auto" style="font-size: x-small;">Read
+                    more
+                </a>
+                <small class="text-muted my-auto"> - {{user.local.userName}}</small>
             </div>
         </div>
     </div>
