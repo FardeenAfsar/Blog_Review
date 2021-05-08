@@ -37,4 +37,11 @@ router.post("/post", ensureAuth, async (req, res) => {
     });
 });
 
+// @desc    Get the review posting page
+// @route   GET /review/post
+router.get("/view", ensureAuth, async (req, res) => {
+  const d = await Review.findById(req.query.r);
+  console.log(d);
+});
+
 module.exports = router;

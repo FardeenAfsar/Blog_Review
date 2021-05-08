@@ -4,7 +4,7 @@
     <div class="col">
         <div class="card h-100">
             <div class="movie-list">
-                <a href="#">
+                <a href="/review/view?r={{_id}}">
                     <img src="https://image.tmdb.org/t/p/original/{{movie.image}}" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">{{movie.title}}</h5>
@@ -13,10 +13,11 @@
                 </a>
             </div>
             <div class="card-footer mt-auto d-flex justify-content-end">
-                <a href="#" class="btn btn-outline-success btn-sm mr-2" style="font-size: x-small;">
-                    3
+                <a href="#" class="btn btn-outline-danger shadow-none btn-sm mr-2 d-flex justify-content-center"
+                    style="font-size: medium; border:none">
+                    <i class="far fa-heart fa-lg align-self-center"></i>
                 </a>
-                <a href="#" class="btn btn-outline-success btn-sm mr-auto" style="font-size: x-small;">Read
+                <a href="#" class="btn btn-outline-success btn-sm mr-auto" style="font-size:medium; border:none">Read
                     more
                 </a>
                 <small class="text-muted my-auto"> - {{user.local.userName}}</small>
