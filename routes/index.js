@@ -6,7 +6,6 @@ const Review = require("../models/Review");
 const axios = require("axios");
 
 const { ensureAuth, ensureGuest, validateAuth } = require("../middleware/auth");
-const { response } = require("express");
 
 // @desc    Landing Page
 // @route   GET /

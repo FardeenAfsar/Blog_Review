@@ -3,15 +3,15 @@
     <form action="/review?id={{movieId}}" method="POST" class="col s12">
         <div class="col">
             <div class="input-field">
-                <input type="text" id="title" name="title">
-                <label for="title">Title</label>
+                <input type="text" id="coverDesc" name="coverDesc" maxlength="350" required>
+                <label for="coverDesc">Cover description</label>
             </div>
         </div>
 
         <div class="col">
             <div class="input-field">
                 <h5>Content:</h5>
-                <textarea name="body" id="body"></textarea>
+                <textarea name="body" id="body" required></textarea>
             </div>
         </div>
 
