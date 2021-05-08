@@ -67,7 +67,7 @@ app.use(passport.session());
 
 // Global variables
 app.use((req, res, next) => {
-  res.locals.userId = req.user._id || null;
+  res.locals.userId = req.user ? req.user._id : null;
   next();
 });
 
