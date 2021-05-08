@@ -80,4 +80,15 @@ router.get("/movie", ensureAuth, (req, res) => {
     });
 });
 
+// @desc    Get user profile
+// @route   GET /user
+router.get("/user", ensureAuth, async (req, res) => {
+  const reviews = await Review.find({ user: req.query.u })
+    .populate("user")
+    .lean();
+  res.render("profile", {
+    reviews,
+  });
+});
+
 module.exports = router;

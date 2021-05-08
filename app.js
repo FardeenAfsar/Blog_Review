@@ -65,6 +65,12 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(passport.initialize());
 app.use(passport.session());
 
+// Global variables
+app.use((req, res, next) => {
+  res.locals.userId = req.user._id || null;
+  next();
+});
+
 // Routes
 app.use("/", require("./routes/index"));
 app.use("/auth", require("./routes/auth"));
