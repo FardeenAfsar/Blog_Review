@@ -25,9 +25,9 @@
     <div class="container-fluid h-100">
         <div class="row align-items-center justify-content-center h-100">
             <div class="col-md-10 col-lg-5 mb-5">
-                <div class="card text-center mb-5">
+                {{!-- <div class="card text-center mb-5"> --}}
                     {{{body}}}
-                </div>
+                    {{!-- </div> --}}
             </div>
         </div>
     </div>
@@ -52,16 +52,26 @@
     <script>
         tinymce.init({
             selector: '#body',
-            plugins: 'lists autolink link autoresize emoticons image imagetools nonbreaking',
+            plugins: 'lists autolink link autoresize emoticons image imagetools nonbreaking fullscreen',
             menubar: 'format',
-            toolbar: 'fontselect fontsizeselect bold italic underline formatselect alignleft aligncenter alignright numlist bullist blocks link emoticons image',
+            toolbar: 'fontselect fontsizeselect | bold italic underline | formatselect | numlist bullist | blocks link image emoticons fullscreen ',
+            themes: 'inlite',
             default_link_target: '_blank',
-            min_height: 500,
+            min_height: 700,
+            width: 1000,
             object_resizing: true,
             nonbreaking_force_tab: true,
-            setup: editor => {
-                editor.on('change', e => editor.save())
-            }
+            init_instance_callback: editor => {
+                editor.on('Change', e => {
+                    var str = tinymce.get('body').getContent({ format: 'text' });
+                    if (str.length > 350) {
+                        str = str.substr(0, str.lastIndexOf(' ', 300)) + "...";
+                    }
+                    document.getElementById('coverDesc').value = str;
+                    editor.save()
+                })
+            },
+
         });
 
     </script>

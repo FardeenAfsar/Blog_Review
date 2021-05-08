@@ -9,7 +9,7 @@ const { ensureAuth } = require("../middleware/auth");
 // @route   GET /review/post
 router.get("/post", ensureAuth, (req, res) => {
   res.render("post_review", {
-    layout: "post_review",
+    layout: "review",
     movieId: req.query.id,
   });
 });
@@ -37,11 +37,13 @@ router.post("/post", ensureAuth, async (req, res) => {
     });
 });
 
-// @desc    Get the review posting page
-// @route   GET /review/post
+// @desc    View review blog
+// @route   GET /review/view
 router.get("/view", ensureAuth, async (req, res) => {
-  const d = await Review.findById(req.query.r);
-  console.log(d);
+  const data = await Review.findById(req.query.r).populate("user").lean();
+  res.render("view_review", {
+    data,
+  });
 });
 
 module.exports = router;

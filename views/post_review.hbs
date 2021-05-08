@@ -1,23 +1,19 @@
-<h3>Write your review!</h3>
-<div class="row">
+<div class="row d-flex justify-content-center mb-3">
+    <h1>Write your movie blog!</h1>
+</div>
+<div class="row mt-2">
     <form action="/review/post?id={{movieId}}" method="POST" class="col s12">
-        <div class="col">
-            <div class="input-field">
-                <input type="text" id="coverDesc" name="coverDesc" maxlength="350" required>
-                <label for="coverDesc">Cover description</label>
-            </div>
-        </div>
 
-        <div class="col">
+        <div class="col d-flex justify-content-center">
+            <input type="hidden" id="coverDesc" name="coverDesc">
             <div class="input-field">
-                <h5>Content:</h5>
                 <textarea name="body" id="body" required></textarea>
             </div>
         </div>
 
-        <div class="col">
-            <input type="submit" value="Save" class="btn">
-            <a href="/home" class="btn">Cancel</a>
+        <div class="col d-flex justify-content-center mt-3">
+            <a href="/home" class="btn btn-outline-dark mx-1">Cancel</a>
+            <input type="submit" value="Post" class="btn btn-outline-dark mx-1">
         </div>
     </form>
 </div>
