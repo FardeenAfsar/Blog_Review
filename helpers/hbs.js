@@ -41,4 +41,11 @@ module.exports = {
       return "";
     }
   },
+  deleteBtn: (reviewUserId, loggedUserId, reviewId) => {
+    if (reviewUserId.toString() == loggedUserId.toString()) {
+      return `<form action="/review/delete?r=${reviewId}" method="POST"><input type="hidden" name="_method" value="DELETE"><button type="submit" class="btn btn-outline-info btn-sm" style="font-size:medium; border: none"><i class="far fa-trash-alt fa-lg"></i></button></form>`;
+    } else {
+      return "";
+    }
+  },
 };

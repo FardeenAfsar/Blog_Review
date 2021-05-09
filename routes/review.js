@@ -60,13 +60,20 @@ router.get("/edit", ensureAuth, ensureUser, async (req, res) => {
   });
 });
 
-// @desc    Edit review blog
-// @route   GET /review/edit
+// @desc    Update review blog
+// @route   PUT /review/edit
 router.put("/edit", ensureAuth, async (req, res) => {
   await Review.findOneAndUpdate({ _id: req.query.id }, req.body, {
     new: true,
     runValidators: true,
   });
+  res.redirect("/home");
+});
+
+// @desc    Delete review blog
+// @route   DELETE /review/edit
+router.delete("/delete", ensureAuth, async (req, res) => {
+  await Review.remove({ _id: req.query.r });
   res.redirect("/home");
 });
 

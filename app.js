@@ -49,6 +49,7 @@ const {
   stringMatch,
   paginate,
   editBtn,
+  deleteBtn,
 } = require("./helpers/hbs");
 
 // View engine
@@ -61,6 +62,7 @@ app.engine(
       stringMatch,
       paginate,
       editBtn,
+      deleteBtn,
     },
     defaultLayout: "main",
     extname: ".hbs",
