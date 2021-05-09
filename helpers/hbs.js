@@ -16,8 +16,6 @@ module.exports = {
       currentPage = pages - 2;
     }
     for (let i = currentPage - 2; i <= currentPage + 2; i++) {
-      // if (currentPage > 3 && pages > 5)
-      // 1 - page display (max 5)
       if (i == activePage) {
         res += options.fn({
           page: i,
@@ -34,5 +32,13 @@ module.exports = {
       }
     }
     return res;
+  },
+  editBtn: (reviewUserId, loggedUserId, reviewId) => {
+    if (reviewUserId.toString() == loggedUserId.toString()) {
+      return `<a href="/review/edit?r=${reviewId}" class="btn btn-outline-info btn-sm" style="font-size:medium; border: none"><i
+      class="far fa-edit fa-lg"></i></a>`;
+    } else {
+      return "";
+    }
   },
 };

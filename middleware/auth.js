@@ -1,5 +1,6 @@
 const User = require("../models/User");
 const bcrypt = require("bcrypt");
+const Review = require("../models/Review");
 
 module.exports = {
   ensureAuth: (req, res, next) => {
@@ -47,6 +48,15 @@ module.exports = {
         req.session["alert"] = "Username already exists";
         res.redirect("/");
       }
+    }
+  },
+
+  ensureUser: async (req, res, next) => {
+    const reviewUser = await Review.findById(req.query.r).lean();
+    if (req.user._id.toString() == reviewUser.user.toString()) {
+      next();
+    } else {
+      res.redirect("/");
     }
   },
 };

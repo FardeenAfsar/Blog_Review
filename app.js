@@ -3,6 +3,7 @@ const express = require("express");
 const dotenv = require("dotenv");
 const exphbs = require("express-handlebars");
 const morgan = require("morgan");
+const methodOverride = require("method-override");
 const mongoose = require("mongoose");
 const passport = require("passport");
 const session = require("express-session");
@@ -20,9 +21,21 @@ connectDB();
 
 const app = express();
 
-// Body parse
+// Body parser
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+
+// Method override
+app.use(
+  methodOverride((req, res) => {
+    if (req.body && typeof req.body === "object" && "_method" in req.body) {
+      // look in urlencoded POST bodies and delete it
+      let method = req.body._method;
+      delete req.body._method;
+      return method;
+    }
+  })
+);
 
 // Logger
 if (process.env.NODE_ENV == "development") {
@@ -30,7 +43,13 @@ if (process.env.NODE_ENV == "development") {
 }
 
 // Handlebar helper
-const { nextPage, prevPage, stringMatch, paginate } = require("./helpers/hbs");
+const {
+  nextPage,
+  prevPage,
+  stringMatch,
+  paginate,
+  editBtn,
+} = require("./helpers/hbs");
 
 // View engine
 app.engine(
@@ -41,6 +60,7 @@ app.engine(
       prevPage,
       stringMatch,
       paginate,
+      editBtn,
     },
     defaultLayout: "main",
     extname: ".hbs",

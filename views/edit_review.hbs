@@ -1,0 +1,19 @@
+<div class="row d-flex justify-content-center mb-3">
+    <h1>Edit your movie blog</h1>
+</div>
+<div class="row mt-2">
+    <form action="/review/edit?id={{reviewId}}" method="POST" class="col s12">
+        <input type="hidden" name="_method" value="PUT">
+        <div class="col d-flex justify-content-center">
+            <input type="hidden" id="coverDesc" name="coverDesc">
+            <div class="input-field">
+                <textarea name="body" id="body" required></textarea>
+            </div>
+        </div>
+
+        <div class="col d-flex justify-content-center mt-3">
+            <a href="/home" class="btn btn-outline-dark mx-1">Cancel</a>
+            <input type="submit" value="Save" class="btn btn-outline-dark mx-1">
+        </div>
+    </form>
+</div>

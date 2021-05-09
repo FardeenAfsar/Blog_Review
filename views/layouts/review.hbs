@@ -62,8 +62,9 @@
             object_resizing: true,
             nonbreaking_force_tab: true,
             init_instance_callback: editor => {
+                tinymce.activeEditor.setContent(`{{{content}}}`)
                 editor.on('Change', e => {
-                    var str = tinymce.get('body').getContent({ format: 'text' });
+                    var str = tinymce.get('body').getContent({ format: 'text' }).replace(/\r?\n|\r/g, " ");
                     if (str.length > 350) {
                         str = str.substr(0, str.lastIndexOf(' ', 300)) + "...";
                     }

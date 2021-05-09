@@ -3,7 +3,7 @@ const router = express.Router();
 const Review = require("../models/Review");
 const axios = require("axios");
 
-const { ensureAuth } = require("../middleware/auth");
+const { ensureAuth, ensureUser } = require("../middleware/auth");
 
 // @desc    Get the review posting page
 // @route   GET /review/post
@@ -18,6 +18,9 @@ router.get("/post", ensureAuth, (req, res) => {
 // @route   POST /review/post
 router.post("/post", ensureAuth, async (req, res) => {
   req.body.user = req.user.id;
+
+  // Regex to remove newline tags
+  req.body.body = req.body.body.replace(/\r?\n|\r/g, " ");
   axios
     .get(
       `https://api.themoviedb.org/3/movie/${req.query.id}?api_key=${process.env.TMDB_API_KEY}&language=en-US`
@@ -44,6 +47,27 @@ router.get("/view", ensureAuth, async (req, res) => {
   res.render("view_review", {
     data,
   });
+});
+
+// @desc    Edit review blog
+// @route   GET /review/edit
+router.get("/edit", ensureAuth, ensureUser, async (req, res) => {
+  const content = await Review.findById(req.query.r);
+  res.render("edit_review", {
+    layout: "review",
+    content: content.body,
+    reviewId: req.query.r,
+  });
+});
+
+// @desc    Edit review blog
+// @route   GET /review/edit
+router.put("/edit", ensureAuth, async (req, res) => {
+  await Review.findOneAndUpdate({ _id: req.query.id }, req.body, {
+    new: true,
+    runValidators: true,
+  });
+  res.redirect("/home");
 });
 
 module.exports = router;
