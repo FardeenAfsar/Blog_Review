@@ -71,7 +71,7 @@ router.put("/edit", ensureAuth, async (req, res) => {
 });
 
 // @desc    Delete review blog
-// @route   DELETE /review/edit
+// @route   DELETE /review/delete
 router.delete("/delete", ensureAuth, async (req, res) => {
   await Review.remove({ _id: req.query.r });
   res.redirect("/home");
