@@ -35,3 +35,41 @@ html {
   color: black;
   text-decoration: none;
 }
+
+.fab-plus {
+  text-decoration: none;
+  position: fixed;
+  bottom: 2.5vh;
+  right: 2vh;
+  z-index: 999;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 100%;
+  background: #f67a23;
+  box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.2);
+}
+
+.fab-plus i {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  color: white;
+}
+
+.fab-plus:hover {
+  background: rgba(0, 0, 0, 0.8);
+  text-decoration: none;
+}
+
+.fab-plus:hover i {
+  color: #f67a23;
+}
+
+.search {
+  margin-left: -3.2rem;
+}
+
+.search-input {
+  padding-right: 3.2rem;
+}

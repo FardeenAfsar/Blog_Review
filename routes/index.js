@@ -91,4 +91,18 @@ router.get("/user", ensureAuth, async (req, res) => {
   });
 });
 
+// #region playground
+
+router.get("/fav", ensureAuth, async (req, res) => {
+  res.render("fav");
+});
+
+router.post("/pg", ensureAuth, async (req, res) => {
+  console.log(req.query.m);
+  res.render("fav", {
+    movie: req.query.m,
+  });
+});
+// #endregion
+
 module.exports = router;

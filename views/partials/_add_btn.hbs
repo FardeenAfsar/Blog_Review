@@ -1,3 +1,30 @@
-<a href="/post" class="btn btn-outline-danger ml-auto">
-    <i class="fas fa-plus-circle fa-2x"></i>
-</a>
+<!-- Button trigger modal -->
+<button type="button" class="btn fab-plus" data-bs-toggle="modal" data-bs-target="#searchMovieModal">
+    <i class="fas fa-plus fa-lg"></i>
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="searchMovieModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="searchMovieModalLabel">Search movies to review</h5>
+                <button type="button" class="btn" data-bs-dismiss="modal">
+                    <i class="fas fa-times fa-lg"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="/movie" method="POST" class="d-flex mx-lg-5 mb-lg-0 mb-2">
+                    <input class="form-control search-input mr-2" type="search" placeholder="Review Movie" name="search"
+                        aria-label="Search">
+                    <button class="btn search" type="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

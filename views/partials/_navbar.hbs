@@ -12,7 +12,7 @@
                 <a class="nav-link nav-link-ltr" aria-current="page" href="/home">Home</a>
             </li>
             <li class="nav-item mx-lg-4">
-                <a class="nav-link nav-link-ltr" href="/">Favorites</a>
+                <a class="nav-link nav-link-ltr" href="/fav">Favorites</a>
             </li>
             <li class="nav-item mx-lg-4">
                 <a class="nav-link nav-link-ltr" href="/user?u={{userId}}">Profile</a>
@@ -20,8 +20,11 @@
         </ul>
 
         <form action="/movie" method="POST" class="d-flex mx-lg-5 mb-lg-0 mb-2">
-            <input class="form-control mr-2" type="search" placeholder="Review Movie" name="search" aria-label="Search">
-            <button class="btn btn-secondary" type="submit">Search</button>
+            <input class="form-control search-input mr-2" type="search" placeholder="Review Movie" name="search"
+                aria-label="Search">
+            <button class="btn search" type="submit">
+                <i class="fas fa-search"></i>
+            </button>
         </form>
         <a href="/auth/logout" class="btn btn-outline-warning ml-lg-auto" role="button">Logout</a>
     </div>
