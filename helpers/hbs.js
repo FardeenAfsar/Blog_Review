@@ -35,7 +35,7 @@ module.exports = {
   },
   editBtn: (reviewUserId, loggedUserId, reviewId) => {
     if (reviewUserId.toString() == loggedUserId.toString()) {
-      return `<a href="/review/edit?r=${reviewId}" class="btn btn-outline-info btn-sm" style="font-size:medium; border: none"><i
+      return `<a href="/review/edit?r=${reviewId}" class="btn btn-outline-info btn-sm mr-2" style="font-size:medium; border: none"><i
       class="far fa-edit fa-lg"></i></a>`;
     } else {
       return "";
@@ -43,7 +43,7 @@ module.exports = {
   },
   deleteBtn: (reviewUserId, loggedUserId, reviewId) => {
     if (reviewUserId.toString() == loggedUserId.toString()) {
-      return `<form action="/review/delete?r=${reviewId}" method="POST"><input type="hidden" name="_method" value="DELETE"><button type="submit" class="btn btn-outline-info btn-sm" style="font-size:medium; border: none"><i class="far fa-trash-alt fa-lg"></i></button></form>`;
+      return `<form action="/review/delete?r=${reviewId}" method="POST" class="mr-auto"><input type="hidden" name="_method" value="DELETE"><button type="submit" class="btn btn-outline-info btn-sm" style="font-size:medium; border: none"><i class="far fa-trash-alt fa-lg"></i></button></form>`;
     } else {
       return "";
     }
