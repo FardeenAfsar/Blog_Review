@@ -9,6 +9,9 @@ $card-bg: $primary;
 $card-color: #fffafa;
 $card-border-color: #2bae66;
 
+$offcanvas-horizontal-width: 100vw;
+$offcanvas-bg-color: rgba(29, 24, 24, 0.9);
+
 @import "../../node_modules/bootstrap/scss/bootstrap";
 
 body,
@@ -30,6 +33,12 @@ body {
   background-color: #fffafa;
 }
 
+.navbar-toggler:focus,
+.navbar-toggler:active {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
 .nav-link-ltr {
   padding: 0% !important;
   position: relative !important;
@@ -37,7 +46,6 @@ body {
 }
 
 .nav-link-ltr:hover {
-  color: $secondary;
   opacity: 1 !important;
 }
 
