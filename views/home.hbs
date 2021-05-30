@@ -1,8 +1,8 @@
 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 g-4">
     {{#if reviews}}
     {{#each reviews}}
-    <div class="col my-4">
-        <div class="card h-100 border-1">
+    <div class="col">
+        <div class="card my-3 h-100 border-2">
             <div class="movie-list">
                 <a href="/review/view?r={{_id}}">
                     <img src="https://image.tmdb.org/t/p/original/{{movie.image}}" class="card-img-top" alt="...">

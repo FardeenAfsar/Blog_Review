@@ -1,13 +1,13 @@
 $primary: #101820;
-$secondary: #fee715;
+$secondary: #f2aa4c;
 $alt-secondary: #422057;
 $dark: $primary;
 $warning: $secondary;
-$info: $alt-secondary;
-// $navbar-dark-color: $secondary;
-// $card-bg: $primary;
-// $card-color: #ffffff;
-// $card-border-color: $secondary;
+$info: $secondary;
+$navbar-dark-color: $secondary;
+$card-bg: $primary;
+$card-color: #fffafa;
+$card-border-color: #2bae66;
 
 @import "../../node_modules/bootstrap/scss/bootstrap";
 
@@ -27,7 +27,7 @@ body {
   // background-repeat: no-repeat;
   // background-size: cover;
   // background-attachment: fixed;
-  background-color: #e1e1dd;
+  background-color: #fffafa;
 }
 
 .nav-link-ltr {
@@ -37,6 +37,7 @@ body {
 }
 
 .nav-link-ltr:hover {
+  color: $secondary;
   opacity: 1 !important;
 }
 
@@ -45,7 +46,7 @@ body {
   height: 0.2rem;
   content: "";
   position: absolute;
-  background-color: white;
+  background-color: $secondary;
   width: 0%;
   bottom: 0%;
 }
