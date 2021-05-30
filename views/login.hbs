@@ -1,10 +1,10 @@
 <div class="card-header">
     <ul class="nav nav-pills card-header-pills nav-fill" id="pills-tab" role="tablist">
-        <li class="nav-item" role="presentation">
-            <button class="btn active btn-outline-dark btn-block shadow-none" id="login-pill" data-bs-toggle="pill"
+        <li class="nav-item d-grid" role="presentation">
+            <button class="btn active btn-outline-dark shadow-none" id="login-pill" data-bs-toggle="pill"
                 data-bs-target="#login" type="button" role="pill">Login</button>
         </li>
-        <li class="nav-item" role="presentation">
+        <li class="nav-item d-grid" role="presentation">
             <button class="btn btn-outline-dark btn-block shadow-none" id="signup-pill" data-bs-toggle="pill"
                 data-bs-target="#signup" type="button" role="pill">Signup</button>
         </li>
@@ -16,17 +16,17 @@
         <div class="card-body">
             <h3 class="card-title">Login</h3>
             <form action="/" method="POST" class="needs-validation" novalidate>
-                <div class="form-row justify-content-center my-4">
+                <div class="form-row d-flex justify-content-center my-4">
                     <div class="col-8">
                         <input type="username" class="form-control" placeholder="Username" name="username" required>
                     </div>
                 </div>
-                <div class="form-row justify-content-center my-4">
+                <div class="form-row d-flex justify-content-center my-4">
                     <div class="col-8">
                         <input type="password" class="form-control" placeholder="Password" name="password" required>
                     </div>
                 </div>
-                <div class="form-row justify-content-center my-4">
+                <div class="form-row d-flex justify-content-center my-4">
                     <div class="col-8">
                         <button type="submit" class="btn btn-block btn-outline-dark">Login</button>
                     </div>
@@ -46,18 +46,18 @@
         <div class="card-body">
             <h3 class="card-title">Signup</h3>
             <form action="/" method="POST" class="needs-validation" novalidate>
-                <div class="form-row justify-content-center my-4">
+                <div class="form-row d-flex justify-content-center my-4">
                     <div class="col-8">
                         <input type="text" class="form-control" placeholder="Username" name="username" required>
                     </div>
                 </div>
-                <div class="form-row justify-content-center my-4">
+                <div class="form-row d-flex justify-content-center my-4">
                     <div class="col-8">
                         <input type="password" class="form-control" placeholder="Password" name="password" id="password"
                             required>
                     </div>
                 </div>
-                <div class="form-row justify-content-center my-4">
+                <div class="form-row d-flex justify-content-center my-4">
                     <div class="col-8">
                         <input type="password" class="form-control" placeholder="Confirm Password" id="confirm_password"
                             name="confirm_password" required>
@@ -66,7 +66,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="form-row justify-content-center my-4">
+                <div class="form-row d-flex justify-content-center my-4">
                     <div class="col-8">
                         <button type="submit" class="btn btn-block btn-outline-dark">Signup</button>
                     </div>

@@ -1,9 +1,13 @@
-$raisin: #0d1137;
-$pink: #e52165;
-$light-pink: #f8d3e2;
-$dark: $raisin;
-$warning: $pink;
-$navbar-dark-color: $pink;
+$primary: #101820;
+$secondary: #fee715;
+$alt-secondary: #422057;
+$dark: $primary;
+$warning: $secondary;
+$info: $alt-secondary;
+// $navbar-dark-color: $secondary;
+// $card-bg: $primary;
+// $card-color: #ffffff;
+// $card-border-color: $secondary;
 
 @import "../../node_modules/bootstrap/scss/bootstrap";
 
@@ -13,16 +17,17 @@ html {
   height: 100vh;
 }
 
-.bg-raisin {
-  background-color: $raisin;
+.nav-color {
+  background-color: $primary;
 }
 
 body {
-  background-image: url("/images/splash_bg.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
+  // background-image: url("/images/splash_bg.jpg");
+  // background-position: center;
+  // background-repeat: no-repeat;
+  // background-size: cover;
+  // background-attachment: fixed;
+  background-color: #e1e1dd;
 }
 
 .nav-link-ltr {
@@ -66,7 +71,7 @@ body {
   width: 3rem;
   height: 3rem;
   border-radius: 100%;
-  background: $pink;
+  background: $secondary;
   box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.2);
 }
 
@@ -79,12 +84,12 @@ body {
 }
 
 .fab-plus:hover {
-  background: $raisin;
+  background: $primary;
   text-decoration: none;
 }
 
 .fab-plus:hover i {
-  color: $pink;
+  color: $secondary;
 }
 
 .search {
@@ -106,5 +111,5 @@ body {
 .username-link,
 .username-link:hover {
   text-decoration: none;
-  color: $pink;
+  color: $secondary;
 }
