@@ -5,9 +5,8 @@ $dark: $primary;
 $warning: $secondary;
 $info: $secondary;
 $navbar-dark-color: $secondary;
-// $card-bg: $primary;
-// $card-color: #fffafa;
-// $card-border-color: #2bae66;
+$card-bg: #fafafa;
+$card-color: #030200;
 $card-border-color: $secondary;
 
 $offcanvas-horizontal-width: 100vw;
@@ -23,6 +22,7 @@ html {
 
 body {
   padding-top: 6vh;
+  background-color: $primary;
 }
 
 .card-footer {
@@ -30,15 +30,6 @@ body {
 }
 
 .nav-color {
-  background-color: $primary;
-}
-
-body {
-  // background-image: url("/images/splash_bg.jpg");
-  // background-position: center;
-  // background-repeat: no-repeat;
-  // background-size: cover;
-  // background-attachment: fixed;
   background-color: $primary;
 }
 
