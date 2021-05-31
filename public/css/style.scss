@@ -5,9 +5,10 @@ $dark: $primary;
 $warning: $secondary;
 $info: $secondary;
 $navbar-dark-color: $secondary;
-$card-bg: $primary;
-$card-color: #fffafa;
-$card-border-color: #2bae66;
+// $card-bg: $primary;
+// $card-color: #fffafa;
+// $card-border-color: #2bae66;
+$card-border-color: $secondary;
 
 $offcanvas-horizontal-width: 100vw;
 $offcanvas-bg-color: rgba(29, 24, 24, 0.9);
@@ -20,6 +21,14 @@ html {
   height: 100vh;
 }
 
+body {
+  padding-top: 6vh;
+}
+
+.card-footer {
+  background-color: $primary;
+}
+
 .nav-color {
   background-color: $primary;
 }
@@ -30,7 +39,7 @@ body {
   // background-repeat: no-repeat;
   // background-size: cover;
   // background-attachment: fixed;
-  background-color: #fffafa;
+  background-color: $primary;
 }
 
 .navbar-toggler:focus,
