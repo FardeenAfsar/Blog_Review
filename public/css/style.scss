@@ -8,11 +8,23 @@ $navbar-dark-color: $secondary;
 $card-bg: #fafafa;
 $card-color: #030200;
 $card-border-color: $secondary;
+$modal-sm: 350px;
 
 $offcanvas-horizontal-width: 100vw;
 $offcanvas-bg-color: rgba(29, 24, 24, 0.9);
 
 @import "../../node_modules/bootstrap/scss/bootstrap";
+
+* {
+  font-family: "Montserrat", sans-serif;
+}
+
+.short-desc {
+  max-width: 60ch;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
 
 body,
 html {
@@ -121,4 +133,9 @@ body {
 .username-link:hover {
   text-decoration: none;
   color: $secondary;
+}
+
+.profile-heading {
+  color: #fafafa;
+  text-align: center;
 }

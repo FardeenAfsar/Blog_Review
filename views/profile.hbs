@@ -1,8 +1,25 @@
-<div class="row row-cols-1 row-cols-md-4 g-4">
+<div class="row profile-heading pt-4 mb-5">
+  <div class="col-12 d-flex justify-content-center">
+    <h1 class="display-4">Welcome to Dempa's Blogs!</h1>
+  </div>
+  <div class="col-12 d-flex justify-content-start">
+    <h3 class="align-self-center mb-0">Blogs 26</h3>
+  </div>
+  <div class="col-8 d-flex justify-content-start">
+    <h3 class="align-self-center mb-0">Followers 45</h3>
+  </div>
+  <div class="col-4 d-flex justify-content-end">
+    <div class="btn btn-outline-info my-1">
+      Follow
+      <i class="fas fa-plus"></i>
+    </div>
+  </div>
+</div>
+{{!-- <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 g-4">
     {{#if reviews}}
     {{#each reviews}}
     <div class="col">
-        <div class="card h-100">
+        <div class="card h-100 border-2 my-2">
             <div class="movie-list">
                 <a href="/review/view?r={{_id}}">
                     <img src="https://image.tmdb.org/t/p/original/{{movie.image}}" class="card-img-top" alt="...">
@@ -13,13 +30,6 @@
                 </a>
             </div>
             <div class="card-footer mt-auto d-flex justify-content-end">
-                <a href="#" class="btn btn-outline-danger shadow-none btn-sm mr-2 d-flex justify-content-center"
-                    style="font-size: medium; border:none">
-                    <i class="far fa-heart fa-lg align-self-center"></i>
-                </a>
-                <a href="#" class="btn btn-outline-success btn-sm mr-auto" style="font-size:medium; border:none">Read
-                    more
-                </a>
                 {{{deleteBtn user._id ../userId _id}}}
                 {{{editBtn user._id ../userId _id}}}
                 <small class="text-muted my-auto"> - {{user.local.userName}}</small>
@@ -30,4 +40,74 @@
     {{else}}
     <p>No reviews</p>
     {{/if}}
+</div> --}}
+
+<div class="row">
+  <div class="col-10 mx-auto my-3">
+    <div class="list-group">
+      {{! <a
+        type="button"
+        class="list-group-item list-group-item-action"
+        data-bs-toggle="modal"
+        data-bs-target="#movieModal"
+      >
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1">movie b</h5>
+          <small class="text-muted">3 days ago</small>
+        </div>
+        <p class="mb-1">Some placeholder content in a paragraph.</p>
+        <small class="text-muted">And some muted small print.</small>
+      </a> }}
+
+      {{#if reviews}}
+        {{#each reviews}}
+          <a
+            type="button"
+            class="list-group-item list-group-item-action"
+            data-bs-toggle="modal"
+            data-bs-target="#review_id_{{_id}}"
+          >
+            <div class="d-flex w-100 justify-content-between">
+              <h5>{{movie.title}}</h5>
+              <small class="text-muted">{{createdAt}}</small>
+            </div>
+            <p class="mb-1 short-desc">{{coverDesc}}</p>
+          </a>
+
+          <div class="modal fade" id="review_id_{{_id}}" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered modal-sm">
+              <div class="modal-content">
+                <div class="modal-body">                        
+                    <div class="col">
+                        <div class="card h-100 border-0">
+                            <div class="movie-list">
+                                <a href="/review/view?r={{_id}}">
+                                    <img src="https://image.tmdb.org/t/p/original/{{movie.image}}" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{movie.title}}</h5>
+                                        <p class="card-text">{{{coverDesc}}}</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer bg-dark">
+                  {{{deleteBtn user._id ../userId _id}}}
+                  {{{editBtn user._id ../userId _id}}}
+                  <a
+                    href="/review/view?r={{_id}}"
+                    type="button"
+                    class="btn btn-secondary"
+                  >Read more</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        {{/each}}
+      {{else}}
+        No Blogs
+      {{/if}}
+    </div>
+  </div>
 </div>
