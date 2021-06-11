@@ -19,13 +19,6 @@ $offcanvas-bg-color: rgba(29, 24, 24, 0.9);
   font-family: "Montserrat", sans-serif;
 }
 
-.short-desc {
-  max-width: 60ch;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-
 body,
 html {
   height: 100%;
@@ -35,6 +28,28 @@ html {
 body {
   padding-top: 6vh;
   background-color: $primary;
+}
+
+.short-desc {
+  max-width: 60ch;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.profile-list {
+  border-color: $primary;
+  background-color: $secondary;
+  color: $primary;
+  transition: 350ms;
+  transition-timing-function: linear;
+}
+
+.profile-list:hover {
+  transition: 200ms;
+  transition-timing-function: ease-in;
+  background-color: $primary;
+  color: $secondary;
 }
 
 .card-footer {

@@ -50,6 +50,7 @@ const {
   paginate,
   editBtn,
   deleteBtn,
+  formatDate,
 } = require("./helpers/hbs");
 
 // View engine
@@ -63,6 +64,7 @@ app.engine(
       paginate,
       editBtn,
       deleteBtn,
+      formatDate,
     },
     defaultLayout: "main",
     extname: ".hbs",
