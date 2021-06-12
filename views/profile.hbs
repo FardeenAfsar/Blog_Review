@@ -1,6 +1,6 @@
 <div class="row profile-heading pt-4 mb-5">
   <div class="col-12 d-flex justify-content-center mb-4">
-    <h1 class="display-4">Welcome to Dempa's Blogs!</h1>
+    <h1 class="display-4">Welcome to {{userProfile.local.userName}}'s Blogs!</h1>
   </div>
 
   <div class="col-12 d-flex justify-content-start">
@@ -9,11 +9,14 @@
   <div class="col-8 d-flex justify-content-start">
     <h3 class="align-self-center mb-0">Followers 45</h3>
   </div>
-  <div class="col-4 d-flex justify-content-end">
-    <div class="btn btn-outline-info my-1">
-      Follow
-      <i class="fas fa-plus"></i>
-    </div>
+  <div class="col-4">
+    <form action="/user/follow?id={{userProfile._id}}" method="POST" class="col-12 d-flex justify-content-end">
+      <input type="hidden" name="_method" value="PUT">
+      <button type="submit" class="btn btn-outline-info my-1">
+        Follow
+        <i class="fas fa-plus"></i>
+      </button>
+    </form>
   </div>
 </div>
 
@@ -26,56 +29,48 @@
 
     <div class="list-group">
       {{#if reviews}}
-        {{#each reviews}}
-          <a
-            type="button"
-            class="list-group-item list-group-item-action border-2 profile-list"
-            data-bs-toggle="modal"
-            data-bs-target="#review_id_{{_id}}"
-          >
-            <div class="d-flex w-100 justify-content-between">
-              <div class="col-8">
-                <h5>{{movie.title}}</h5>
-              </div>
-              <small class="text-muted">{{formatDate createdAt}}</small>
-            </div>
-            <p class="mb-1 short-desc">{{coverDesc}}</p>
-          </a>
+      {{#each reviews}}
+      <a type="button" class="list-group-item list-group-item-action border-2 profile-list" data-bs-toggle="modal"
+        data-bs-target="#review_id_{{_id}}">
+        <div class="d-flex w-100 justify-content-between">
+          <div class="col-8">
+            <h5>{{movie.title}}</h5>
+          </div>
+          <small class="text-muted">{{formatDate createdAt}}</small>
+        </div>
+        <p class="mb-1 short-desc">{{coverDesc}}</p>
+      </a>
 
-          <div class="modal fade" id="review_id_{{_id}}" tabindex="-1">
-            <div class="modal-dialog modal-dialog-centered modal-sm">
-              <div class="modal-content">
-                <div class="modal-body">                        
-                    <div class="col">
-                        <div class="card h-100 border-2" style="border-color:#101820">
-                            <div class="movie-list">
-                                <a href="/review/view?r={{_id}}">
-                                    <img src="https://image.tmdb.org/t/p/original/{{movie.image}}" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title">{{movie.title}}</h5>
-                                        <p class="card-text">{{{coverDesc}}}</p>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer bg-dark">
-                  <button class="btn btn-secondary me-auto" data-bs-dismiss="modal" >Close</button>
-                  {{{deleteBtn user._id ../userId _id}}}
-                  {{{editBtn user._id ../userId _id}}}
-                  <a
-                    href="/review/view?r={{_id}}"
-                    type="button"
-                    class="btn btn-secondary"
-                  >Read more</a>
+      <div class="modal fade" id="review_id_{{_id}}" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-sm">
+          <div class="modal-content">
+            <div class="modal-body">
+              <div class="col">
+                <div class="card h-100 border-2" style="border-color:#101820">
+                  <div class="movie-list">
+                    <a href="/review/view?r={{_id}}">
+                      <img src="https://image.tmdb.org/t/p/original/{{movie.image}}" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title">{{movie.title}}</h5>
+                        <p class="card-text">{{{coverDesc}}}</p>
+                      </div>
+                    </a>
+                  </div>
                 </div>
               </div>
+            </div>
+            <div class="modal-footer bg-dark">
+              <button class="btn btn-secondary me-auto" data-bs-dismiss="modal">Close</button>
+              {{{deleteBtn user._id ../userId _id}}}
+              {{{editBtn user._id ../userId _id}}}
+              <a href="/review/view?r={{_id}}" type="button" class="btn btn-secondary">Read more</a>
             </div>
           </div>
-        {{/each}}
+        </div>
+      </div>
+      {{/each}}
       {{else}}
-        No Blogs
+      No Blogs
       {{/if}}
     </div>
   </div>

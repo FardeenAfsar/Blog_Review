@@ -1,23 +1,25 @@
-<div class="row row-cols-1 row-cols-md-4 g-4 movie-list">
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 g-4">
     {{#each data}}
     <div class="col">
-        <a href="/review/post?id={{id}}">
-            <div class="card h-100">
-                <img src='https://image.tmdb.org/t/p/original{{poster_path}}' class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">{{original_title}}</h5>
-                    <p class="card-text">{{overview}}</p>
-                </div>
-                <div class="card-footer">
-                    <small class="text-muted">{{release_date}}</small>
-                </div>
+        <div class="card my-3 border-2 h-100">
+            <div class="movie-list">
+                <a href="/review/post?id={{id}}">
+                    <img src='https://image.tmdb.org/t/p/original{{poster_path}}' class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{original_title}}</h5>
+                        <p class="card-text">{{overview}}</p>
+                    </div>
+                </a>
             </div>
-        </a>
+            <div class="card-footer mt-auto d-flex justify-content-end">
+                <small class="text-muted">{{release_date}}</small>
+            </div>
+        </div>
     </div>
     {{/each}}
 </div>
 
-<div class="row mt-3">
+<div class="row mt-5">
     <div class="col">
         <nav>
             <ul class="pagination justify-content-center">

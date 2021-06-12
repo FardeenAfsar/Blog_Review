@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 const passport = require("passport");
 const Review = require("../models/Review");
+const User = require("../models/User");
+const mongoose = require("mongoose");
 
 const axios = require("axios");
 
@@ -85,23 +87,34 @@ router.get("/movie", ensureAuth, (req, res) => {
 router.get("/user", ensureAuth, async (req, res) => {
   const reviews = await Review.find({ user: req.query.u })
     .populate("user")
+    .sort({ _id: -1 })
     .lean();
+  const userProfile = await User.findOne({ _id: req.query.u }).lean();
   res.render("profile", {
     reviews,
+    userProfile,
   });
 });
 
-// #region playground
-// router.get("/fav", ensureAuth, async (req, res) => {
-//   res.render("fav");
-// });
-
-// router.post("/pg", ensureAuth, async (req, res) => {
-//   console.log(req.query.m);
-//   res.render("fav", {
-//     movie: req.query.m,
-//   });
-// });
-// #endregion
+// @desc    Put user following request
+// @route   PUT /user/follow
+router.put("/user/follow", ensureAuth, async (req, res) => {
+  const id = mongoose.Types.ObjectId(req.query.id);
+  const isFollowing = await User.findOne({
+    _id: res.locals.userId,
+    following: id,
+  });
+  if (isFollowing) {
+    await User.updateOne(
+      { _id: res.locals.userId },
+      { $pull: { following: id } }
+    );
+  } else {
+    await User.updateOne(
+      { _id: res.locals.userId },
+      { $push: { following: id } }
+    );
+  }
+});
 
 module.exports = router;
