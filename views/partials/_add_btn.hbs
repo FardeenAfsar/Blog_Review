@@ -1,10 +1,5 @@
 <!-- Button trigger modal -->
-<button
-  type="button"
-  class="btn fab-plus"
-  data-bs-toggle="modal"
-  data-bs-target="#searchMovieModal"
->
+<button type="button" class="btn fab-plus" data-bs-toggle="modal" data-bs-target="#searchMovieModal">
   <i class="fas fa-plus fa-lg"></i>
 </button>
 
@@ -21,24 +16,17 @@
       </div>
       <div class="modal-body">
         <form action="/movie" method="POST" class="d-flex mx-lg-5 mb-lg-0 mb-2">
-          <input
-            class="form-control search-input mr-2"
-            type="search"
-            placeholder="Review Movie"
-            name="search"
-            aria-label="Search"
-          />
-          <button class="btn search" type="submit">
+          <input class="form-control search-input mr-2" type="search" placeholder="Review Movie" name="search"
+            aria-label="Search" />
+          <button class="btn search" id="searchButton" type="submit">
             <i class="fas fa-search"></i>
           </button>
         </form>
       </div>
       <div class="modal-footer">
-        <button
-          type="button"
-          class="btn btn-secondary"
-          data-bs-dismiss="modal"
-        >Close</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-secondary"
+          onclick="document.getElementById('searchButton').click()">Search</button>
       </div>
     </div>
   </div>
