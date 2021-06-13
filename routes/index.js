@@ -85,14 +85,20 @@ router.get("/movie", ensureAuth, (req, res) => {
 // @desc    Get user profile
 // @route   GET /user
 router.get("/user", ensureAuth, async (req, res) => {
+  const id = mongoose.Types.ObjectId(req.query.u);
   const reviews = await Review.find({ user: req.query.u })
     .populate("user")
     .sort({ _id: -1 })
     .lean();
   const userProfile = await User.findOne({ _id: req.query.u }).lean();
+  const isFollowing = await User.findOne({
+    _id: res.locals.userId,
+    following: id,
+  }).lean();
   res.render("profile", {
     reviews,
     userProfile,
+    isFollowing,
   });
 });
 
@@ -115,6 +121,7 @@ router.put("/user/follow", ensureAuth, async (req, res) => {
       { $push: { following: id } }
     );
   }
+  res.redirect("back");
 });
 
 module.exports = router;
