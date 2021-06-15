@@ -95,10 +95,12 @@ router.get("/user", ensureAuth, async (req, res) => {
     _id: res.locals.userId,
     following: id,
   }).lean();
+  const followersCount = await User.find({ following: id }).lean();
   res.render("profile", {
     reviews,
     userProfile,
     isFollowing,
+    followersCount: followersCount.length,
   });
 });
 
@@ -122,6 +124,22 @@ router.put("/user/follow", ensureAuth, async (req, res) => {
     );
   }
   res.redirect("back");
+});
+
+// @desc    Favorites Page
+// @route   GET /favorites
+router.get("/favorites", ensureAuth, async (req, res) => {
+  const currentUser = await User.findOne({ _id: res.locals.userId }).lean();
+  const favoriteUsers = currentUser.following;
+
+  const reviews = await Review.find({ user: { $in: favoriteUsers } })
+    .sort({ _id: -1 })
+    .limit(25)
+    .populate("user")
+    .lean();
+  res.render("favorites", {
+    reviews,
+  });
 });
 
 module.exports = router;

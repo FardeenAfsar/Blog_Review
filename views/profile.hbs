@@ -4,10 +4,10 @@
   </div>
 
   <div class="col-12 d-flex justify-content-start">
-    <h3 class="align-self-center mb-0">Blogs 26</h3>
+    <h3 class="align-self-center mb-0">Blogs {{reviews.length}}</h3>
   </div>
   <div class="col-8 d-flex justify-content-start">
-    <h3 class="align-self-center mb-0">Followers 45</h3>
+    <h3 class="align-self-center mb-0">Followers {{followersCount}}</h3>
   </div>
   <div class="col-4">
     <form action="/user/follow?id={{userProfile._id}}" method="POST" class="col-12 d-flex justify-content-end">
@@ -15,7 +15,6 @@
       <button type="submit" class="btn btn-outline-info my-1">
         {{#if isFollowing}}
         Unfollow
-        <i class="fas fa-minus"></i>
         {{else}}
         Follow
         <i class="fas fa-plus"></i>

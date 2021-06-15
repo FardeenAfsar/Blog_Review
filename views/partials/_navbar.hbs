@@ -1,84 +1,43 @@
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark nav-color">
-  <button
-    class="navbar-toggler fas fa-bars"
-    type="button"
-    data-bs-toggle="offcanvas"
-    data-bs-target="#offcanvasExample"
-  >
+  <button class="navbar-toggler fas fa-bars" type="button" data-bs-toggle="offcanvas"
+    data-bs-target="#offcanvasExample">
   </button>
   <a class="navbar-brand btn btn-dark disabled ml-auto">
     <i class="fas fa-film fa-lg" style="color: #f2aa4c;"></i>
   </a>
-  <div
-    class="collapse navbar-collapse justify-content-center"
-    id="navbarSupportedContent"
-  >
+  <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
     <ul class="navbar-nav ml-lg-5 me-auto mb-2 mb-lg-0">
       <li class="nav-item mx-lg-4">
-        <a
-          class="nav-link nav-link-ltr"
-          aria-current="page"
-          href="/home"
-        >Home</a>
+        <a class="nav-link nav-link-ltr" aria-current="page" href="/home">Home</a>
       </li>
       <li class="nav-item mx-lg-4">
-        <a class="nav-link nav-link-ltr" href="/fav">Favorites</a>
+        <a class="nav-link nav-link-ltr" href="/favorites">Favorites</a>
       </li>
       <li class="nav-item mx-lg-4">
         <a class="nav-link nav-link-ltr" href="/user?u={{userId}}">Profile</a>
       </li>
     </ul>
-    <a
-      href="/auth/logout"
-      class="btn btn-outline-warning mx-lg-4"
-      role="button"
-    >Logout</a>
+    <a href="/auth/logout" class="btn btn-outline-warning mx-lg-4" role="button">Logout</a>
   </div>
 
-  <div
-    class="offcanvas offcanvas-start"
-    tabindex="-1"
-    id="offcanvasExample"
-    aria-labelledby="offcanvasExampleLabel"
-  >
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
     <div class="offcanvas-header">
-      <button
-        type="button"
-        class="btn-close btn-close-white text-reset"
-        data-bs-dismiss="offcanvas"
-      ></button>
+      <button type="button" class="btn-close btn-close-white text-reset" data-bs-dismiss="offcanvas"></button>
     </div>
     <div class="offcanvas-body mt-5">
       <ul class="navbar-nav ml-lg-5 me-auto mb-2 mb-lg-0">
         <li class="nav-item mx-auto">
-          <a
-            class="nav-link nav-link-ltr my-1"
-            aria-current="page"
-            href="/home"
-            style="font-size: 2rem;"
-          >Home</a>
+          <a class="nav-link nav-link-ltr my-1" aria-current="page" href="/home" style="font-size: 2rem;">Home</a>
         </li>
         <li class="nav-item mx-auto my-1">
-          <a
-            class="nav-link nav-link-ltr"
-            href="/fav"
-            style="font-size: 2rem;"
-          >Favorites</a>
+          <a class="nav-link nav-link-ltr" href="/favorites" style="font-size: 2rem;">Favorites</a>
         </li>
         <li class="nav-item mx-auto my-1">
-          <a
-            class="nav-link nav-link-ltr"
-            href="/user?u={{userId}}"
-            style="font-size: 2rem;"
-          >Profile</a>
+          <a class="nav-link nav-link-ltr" href="/user?u={{userId}}" style="font-size: 2rem;">Profile</a>
         </li>
       </ul>
-      <a
-        href="/auth/logout"
-        class="btn btn-outline-warning d-flex justify-content-center my-1"
-        role="button"
-        style="font-size: 2rem;"
-      >Logout</a>
+      <a href="/auth/logout" class="btn btn-outline-warning d-flex justify-content-center my-1" role="button"
+        style="font-size: 2rem;">Logout</a>
     </div>
   </div>
 </nav>
