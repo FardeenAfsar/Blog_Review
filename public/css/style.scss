@@ -143,10 +143,19 @@ body {
   padding-right: 3.2rem;
 }
 
-.username-link,
-.username-link:hover {
+.username-link {
+  transition: 100ms;
   text-decoration: none;
   color: $secondary;
+  transition-timing-function: linear;
+}
+
+.username-link:hover {
+  transition: 100ms;
+  text-decoration: underline;
+  text-decoration-color: $secondary;
+  color: #fafafa;
+  transition-timing-function: ease-in;
 }
 
 .profile-heading {

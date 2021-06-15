@@ -38,7 +38,9 @@
         data-bs-target="#review_id_{{_id}}">
         <div class="d-flex w-100 justify-content-between">
           <div class="col-8">
-            <h5>{{movie.title}}</h5>
+            <h5>{{title}}-
+              <small class="text-muted">{{movie.title}}</small>
+            </h5>
           </div>
           <small class="text-muted">{{formatDate createdAt}}</small>
         </div>
@@ -49,18 +51,14 @@
         <div class="modal-dialog modal-dialog-centered modal-sm">
           <div class="modal-content">
             <div class="modal-body">
-              <div class="col">
-                <div class="card h-100 border-2" style="border-color:#101820">
-                  <div class="movie-list">
-                    <a href="/review/view?r={{_id}}">
-                      <img src="https://image.tmdb.org/t/p/original/{{movie.image}}" class="card-img-top" alt="...">
-                      <div class="card-body">
-                        <h5 class="card-title">{{movie.title}}</h5>
-                        <p class="card-text">{{{coverDesc}}}</p>
-                      </div>
-                    </a>
+              <div class="col card h-100 border-2 movie-list" style="border-color:#101820">
+                <a href="/review/view?r={{_id}}">
+                  <img src="https://image.tmdb.org/t/p/original/{{movie.image}}" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title">{{movie.title}}</h5>
+                    <p class="card-text">{{{coverDesc}}}</p>
                   </div>
-                </div>
+                </a>
               </div>
             </div>
             <div class="modal-footer bg-dark">

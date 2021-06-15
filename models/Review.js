@@ -2,6 +2,10 @@ const mongoose = require("mongoose");
 const User = require("./User");
 
 const ReviewSchema = new mongoose.Schema({
+  title: {
+    type: String,
+    required: true,
+  },
   coverDesc: {
     type: String,
     required: true,

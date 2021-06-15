@@ -1,6 +1,14 @@
-<div class="row align-items-center justify-content-center h-100 mt-5">
-    <div class="col-md-10 col-lg-8 mb-5">
-        <h3 class="card-title">{{data.user.local.userName}}, * * * *</h3>
+<div class="row align-items-center justify-content-center h-100 mt-2">
+    <div class="col-md-10 col-lg-9 mb-5">
+        <div class="col-12 d-flex mx-auto profile-heading justify-content-center">
+            <h1 class="display-3">{{data.title}}</h1>
+        </div>
+        <h3 class="card-title profile-heading d-flex justify-content-end">
+            <a href="/user?u={{data.user._id}}" class="username-link">{{data.user.local.userName}}</a>
+            <h6 class="d-flex justify-content-end">
+                <small class="text-muted">{{formatDate data.createdAt}}</small>
+            </h6>
+        </h3>
         <div class="card mb-2" style="background-color: #2F3742">
             <div class="card-body" style="color: #fafafa;">
                 {{{data.body}}}

@@ -48,7 +48,7 @@
   <script>
     tinymce.init({
       selector: '#body',
-      plugins: 'lists autolink link autoresize emoticons image imagetools nonbreaking fullscreen',
+      plugins: 'lists autolink link autoresize emoticons image imagetools nonbreaking fullscreen paste',
       menubar: 'format',
       toolbar: 'fontselect fontsizeselect | bold italic underline | formatselect | numlist bullist | blocks link image emoticons fullscreen ',
       default_link_target: '_blank',
@@ -59,6 +59,7 @@
       skin: 'oxide-dark',
       content_css: 'dark',
       content_style: 'body {color: #fafafa;}',
+      paste_as_text: true,
       mobile: {
         menubar: true,
         theme: 'mobile',
