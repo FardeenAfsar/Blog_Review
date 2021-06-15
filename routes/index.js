@@ -36,6 +36,7 @@ router.get("/home", ensureAuth, async (req, res) => {
     .lean();
   res.render("home", {
     reviews,
+    isHome: true,
   });
 });
 
@@ -96,11 +97,13 @@ router.get("/user", ensureAuth, async (req, res) => {
     following: id,
   }).lean();
   const followersCount = await User.find({ following: id }).lean();
+  const isProfile = req.query.u == res.locals.userId;
   res.render("profile", {
     reviews,
     userProfile,
     isFollowing,
     followersCount: followersCount.length,
+    isProfile,
   });
 });
 
@@ -139,6 +142,7 @@ router.get("/favorites", ensureAuth, async (req, res) => {
     .lean();
   res.render("favorites", {
     reviews,
+    isFavorites: true,
   });
 });
 

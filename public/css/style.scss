@@ -90,6 +90,13 @@ body {
   width: 100%;
 }
 
+.current-ltr::before {
+  width: 100% !important;
+}
+.current-ltr {
+  color: #c3c5c7 !important;
+}
+
 .movie-list a:hover,
 .movie-list a:visited,
 .movie-list a:link,
