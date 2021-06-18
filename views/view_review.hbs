@@ -1,5 +1,5 @@
-<div class="row align-items-center justify-content-center h-100 mt-2">
-    <div class="col-md-10 col-lg-9 mb-5">
+<div class="row align-items-center justify-content-center h-100" style="margin-top: -5vh;">
+    <div class="col-md-10 col-lg-9">
         <div class="col-12 d-flex mx-auto profile-heading justify-content-center">
             <h1 class="display-3">{{data.title}}</h1>
         </div>
@@ -14,12 +14,41 @@
                 {{{data.body}}}
             </div>
         </div>
-        <div class="row">
-            <div class="col-1">
-                <a href="#" class="btn btn-outline-danger shadow-none btn-sm" style="font-size: medium; border:none">
-                    <i class="far fa-heart fa-lg align-self-center"></i>
-                </a>
-            </div>
-        </div>
     </div>
 </div>
+
+<div class="row">
+    <div class="col-12 d-flex mx-auto profile-heading justify-content-start mb-3">
+        <h3 class="text-muted"> Comments </h3>
+    </div>
+    <div class="col-12 d-flex flex-row">
+        <form action="/review/comment?r={{data._id}}" method="POST" class="col s12">
+            <input type="hidden" name="_method" value="PUT">
+            <div class="col-11 d-flex flex-column justify-content-center mb-4">
+                <textarea name="comment" id="comment" autocomplete="off" placeholder="Add a comment..." class="comment"
+                    required></textarea>
+            </div>
+            <div class="col-11 d-flex justify-content-end mb-5">
+                <input type="submit" value="Post" class="btn btn-outline-warning mx-1">
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    const txHeight = 32;
+    const tx = document.getElementsByTagName("textarea");
+    for (let i = 0; i < tx.length; i++) {
+        if (tx[i].value == '') {
+            tx[i].setAttribute("style", "height:" + txHeight + "px;overflow-y:hidden;");
+        } else {
+            tx[i].setAttribute("style", "height:" + (tx[i].scrollHeight) + "px;overflow-y:hidden;");
+        }
+        tx[i].addEventListener("input", OnInput, false);
+    }
+
+    function OnInput(e) {
+        this.style.height = "32px";
+        this.style.height = (this.scrollHeight) + "px";
+    }
+</script>

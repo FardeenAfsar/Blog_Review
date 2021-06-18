@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Review = require("../models/Review");
 const axios = require("axios");
+const mongoose = require("mongoose");
 
 const { ensureAuth, ensureUser } = require("../middleware/auth");
 
@@ -75,6 +76,16 @@ router.put("/edit", ensureAuth, async (req, res) => {
 router.delete("/delete", ensureAuth, async (req, res) => {
   await Review.remove({ _id: req.query.r });
   res.redirect("/home");
+});
+
+// @desc    PUt comment
+// @route   PUT /review/comment
+router.put("/comment", ensureAuth, async (req, res) => {
+  const id = mongoose.Types.ObjectId(req.query.r);
+  const userId = mongoose.Types.ObjectId(res.locals.userId);
+  const comment = { user: userId, comment: req.body.comment };
+  await Review.updateOne({ _id: id }, { $push: { comments: comment } });
+  res.redirect("back");
 });
 
 module.exports = router;

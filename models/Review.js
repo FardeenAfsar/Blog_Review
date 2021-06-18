@@ -32,6 +32,21 @@ const ReviewSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: User,
   },
+  comments: [
+    {
+      user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: User,
+      },
+      comment: {
+        type: String,
+      },
+      postedAt: {
+        type: Date,
+        default: Date.now,
+      },
+    },
+  ],
   createdAt: {
     type: Date,
     default: Date.now,
