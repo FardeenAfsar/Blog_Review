@@ -44,9 +44,13 @@ router.post("/post", ensureAuth, async (req, res) => {
 // @desc    View review blog
 // @route   GET /review/view
 router.get("/view", ensureAuth, async (req, res) => {
-  const data = await Review.findById(req.query.r).populate("user").lean();
+  const data = await Review.findById(req.query.r)
+    .populate("user")
+    .populate("comments.user")
+    .lean();
   res.render("view_review", {
     data,
+    comments: data.comments.reverse(),
   });
 });
 

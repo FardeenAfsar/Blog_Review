@@ -1,4 +1,4 @@
-<div class="row align-items-center justify-content-center h-100" style="margin-top: -5vh;">
+<div class="row justify-content-center mb-5" style="margin-top: 5rem;">
     <div class="col-md-10 col-lg-9">
         <div class="col-12 d-flex mx-auto profile-heading justify-content-center">
             <h1 class="display-3">{{data.title}}</h1>
@@ -9,7 +9,7 @@
                 <small class="text-muted">{{formatDate data.createdAt}}</small>
             </h6>
         </h3>
-        <div class="card mb-2" style="background-color: #2F3742">
+        <div class="card" style="background-color: #2F3742">
             <div class="card-body" style="color: #fafafa;">
                 {{{data.body}}}
             </div>
@@ -17,8 +17,8 @@
     </div>
 </div>
 
-<div class="row">
-    <div class="col-12 d-flex mx-auto profile-heading justify-content-start mb-3">
+<div class="row" style="margin-top: 10rem;">
+    <div class="col-12 d-flex mx-auto profile-heading justify-content-start my-3">
         <h3 class="text-muted"> Comments </h3>
     </div>
     <div class="col-12 d-flex flex-row">
@@ -28,11 +28,29 @@
                 <textarea name="comment" id="comment" autocomplete="off" placeholder="Add a comment..." class="comment"
                     required></textarea>
             </div>
-            <div class="col-11 d-flex justify-content-end mb-5">
+            <div class="col-11 d-flex justify-content-end mb-3">
                 <input type="submit" value="Post" class="btn btn-outline-warning mx-1">
             </div>
         </form>
     </div>
+    {{#if comments}}
+    {{#each comments}}
+    <div class="col-12 d-flex flex-wrap">
+        <div class="col-12 d-flex ms-2">
+            <h3 class="profile-heading d-flex justify-content-start">
+                <a href="/user?u={{user._id}}" class="username-link">{{user.local.userName}}</a>
+            </h3>
+            <small class="text-muted ms-2 align-self-end mb-2">{{formatDate postedAt}}</small>
+        </div>
+        <div class="col ms-4 mt-2" style="color: #fafafa;">
+            <p>{{comment}}</p>
+        </div>
+        <div class="col-12">
+            <hr style="color: #fafafa;">
+        </div>
+    </div>
+    {{/each}}
+    {{/if}}
 </div>
 
 <script>
