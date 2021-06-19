@@ -25,11 +25,11 @@
     <div class="col-12 d-flex flex-row">
         <form action="/review/comment?r={{data._id}}" method="POST" class="col s12">
             <input type="hidden" name="_method" value="PUT">
-            <div class="col-11 d-flex flex-column justify-content-center mb-4">
+            <div class="col-12 d-flex flex-column justify-content-center mb-4">
                 <textarea name="comment" id="comment" autocomplete="off" placeholder="Add a comment..." class="comment"
                     required></textarea>
             </div>
-            <div class="col-11 d-flex justify-content-end mb-3">
+            <div class="col-12 d-flex justify-content-end mb-3">
                 <input type="submit" value="Post" class="btn btn-outline-warning mx-1">
             </div>
         </form>
