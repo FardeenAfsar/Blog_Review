@@ -4,7 +4,8 @@
         <div class="card my-3 border-2 h-100">
             <div class="movie-list">
                 <a href="/review/post?id={{id}}">
-                    <img src='https://image.tmdb.org/t/p/original{{poster_path}}' class="card-img-top" alt="...">
+                    <img src='https://image.tmdb.org/t/p/original{{poster_path}}'
+                        onerror="this.onerror=null;this.src='../images/default.jpg';" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">{{original_title}}</h5>
                         <p class="card-text">{{overview}}</p>
@@ -36,7 +37,7 @@
 
                 {{#paginate page totalPages}}
                 <li class="page-item d-none d-sm-block">
-                    <a class="btn mx-1 {{#if this.activePage}} btn-dark disabled {{else}} btn-outline-dark {{/if}}"
+                    <a class="btn mx-1 {{#if this.activePage}} btn-secondary disabled {{else}} btn-outline-secondary {{/if}}"
                         href="/movie?movie={{../movie}}&page={{this.page}}">{{this.page}}</a>
                 </li>
                 {{/paginate}}

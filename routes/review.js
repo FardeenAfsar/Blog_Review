@@ -48,9 +48,13 @@ router.get("/view", ensureAuth, async (req, res) => {
     .populate("user")
     .populate("comments.user")
     .lean();
+  let comments = data.comments;
+  if (data.comments) {
+    comments = data.comments.reverse();
+  }
   res.render("view_review", {
     data,
-    comments: data.comments.reverse(),
+    comments,
   });
 });
 

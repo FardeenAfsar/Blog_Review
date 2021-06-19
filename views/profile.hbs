@@ -54,7 +54,8 @@
             <div class="modal-body">
               <div class="col card h-100 border-2 movie-list" style="border-color:#101820">
                 <a href="/review/view?r={{_id}}">
-                  <img src="https://image.tmdb.org/t/p/original/{{movie.image}}" class="card-img-top" alt="...">
+                  <img src="https://image.tmdb.org/t/p/original/{{movie.image}}"
+                    onerror="this.onerror=null;this.src='../images/default.jpg';" class="card-img-top" alt="...">
                   <div class="card-body">
                     <h5 class="card-title">{{movie.title}}</h5>
                     <p class="card-text">{{{coverDesc}}}</p>
