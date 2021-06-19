@@ -56,94 +56,119 @@ router.post(
 // @desc    Post movie queries and data
 // @route   POST /movie
 router.post("/movie", ensureAuth, (req, res) => {
-  res.redirect(`/movie?movie=${req.body.search}&page=1`);
+  try {
+    res.redirect(`/movie?movie=${req.body.search}&page=1`);
+  } catch (err) {
+    console.log(err);
+    res.render("error/500");
+  }
 });
 
 // @desc    Get movie queries and display page
 // @route   GET /movie
 router.get("/movie", ensureAuth, (req, res) => {
-  axios
-    .get(
-      `https://api.themoviedb.org/3/search/movie?api_key=${process.env.TMDB_API_KEY}&language=en-US&query=${req.query.movie}&page=${req.query.page}&include_adult=false`
-    )
-    .then((response) => {
-      const data = response.data.results.sort((a, b) => {
-        return b.popularity - a.popularity;
+  try {
+    axios
+      .get(
+        `https://api.themoviedb.org/3/search/movie?api_key=${process.env.TMDB_API_KEY}&language=en-US&query=${req.query.movie}&page=${req.query.page}&include_adult=false`
+      )
+      .then((response) => {
+        const data = response.data.results.sort((a, b) => {
+          return b.popularity - a.popularity;
+        });
+        res.render("movie", {
+          data,
+          movie: req.query.movie,
+          page: req.query.page,
+          totalPages: response.data.total_pages,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+        res.redirect("/home");
       });
-      res.render("movie", {
-        data,
-        movie: req.query.movie,
-        page: req.query.page,
-        totalPages: response.data.total_pages,
-      });
-    })
-    .catch((err) => {
-      console.log(err);
-      res.redirect("/home");
-    });
+  } catch (err) {
+    console.log(err);
+    res.render("error/404");
+  }
 });
 
 // @desc    Get user profile
 // @route   GET /user
 router.get("/user", ensureAuth, async (req, res) => {
-  const id = mongoose.Types.ObjectId(req.query.u);
-  const reviews = await Review.find({ user: req.query.u })
-    .populate("user")
-    .sort({ _id: -1 })
-    .lean();
-  const userProfile = await User.findOne({ _id: req.query.u }).lean();
-  const isFollowing = await User.findOne({
-    _id: res.locals.userId,
-    following: id,
-  }).lean();
-  const followersCount = await User.find({ following: id }).lean();
-  const isProfile = req.query.u == res.locals.userId;
-  res.render("profile", {
-    reviews,
-    userProfile,
-    isFollowing,
-    followersCount: followersCount.length,
-    isProfile,
-  });
+  try {
+    const id = mongoose.Types.ObjectId(req.query.u);
+    const reviews = await Review.find({ user: req.query.u })
+      .populate("user")
+      .sort({ _id: -1 })
+      .lean();
+    const userProfile = await User.findOne({ _id: req.query.u }).lean();
+    const isFollowing = await User.findOne({
+      _id: res.locals.userId,
+      following: id,
+    }).lean();
+    const followersCount = await User.find({ following: id }).lean();
+    const isProfile = req.query.u == res.locals.userId;
+    res.render("profile", {
+      reviews,
+      userProfile,
+      isFollowing,
+      followersCount: followersCount.length,
+      isProfile,
+    });
+  } catch (err) {
+    console.log(err);
+    res.render("error/404");
+  }
 });
 
 // @desc    Put user following request
 // @route   PUT /user/follow
 router.put("/user/follow", ensureAuth, async (req, res) => {
-  const id = mongoose.Types.ObjectId(req.query.id);
-  const isFollowing = await User.findOne({
-    _id: res.locals.userId,
-    following: id,
-  });
-  if (isFollowing) {
-    await User.updateOne(
-      { _id: res.locals.userId },
-      { $pull: { following: id } }
-    );
-  } else {
-    await User.updateOne(
-      { _id: res.locals.userId },
-      { $push: { following: id } }
-    );
+  try {
+    const id = mongoose.Types.ObjectId(req.query.id);
+    const isFollowing = await User.findOne({
+      _id: res.locals.userId,
+      following: id,
+    });
+    if (isFollowing) {
+      await User.updateOne(
+        { _id: res.locals.userId },
+        { $pull: { following: id } }
+      );
+    } else {
+      await User.updateOne(
+        { _id: res.locals.userId },
+        { $push: { following: id } }
+      );
+    }
+    res.redirect("back");
+  } catch (err) {
+    console.log(err);
+    res.render("error/500");
   }
-  res.redirect("back");
 });
 
 // @desc    Favorites Page
 // @route   GET /favorites
 router.get("/favorites", ensureAuth, async (req, res) => {
-  const currentUser = await User.findOne({ _id: res.locals.userId }).lean();
-  const favoriteUsers = currentUser.following;
+  try {
+    const currentUser = await User.findOne({ _id: res.locals.userId }).lean();
+    const favoriteUsers = currentUser.following;
 
-  const reviews = await Review.find({ user: { $in: favoriteUsers } })
-    .sort({ _id: -1 })
-    .limit(25)
-    .populate("user")
-    .lean();
-  res.render("favorites", {
-    reviews,
-    isFavorites: true,
-  });
+    const reviews = await Review.find({ user: { $in: favoriteUsers } })
+      .sort({ _id: -1 })
+      .limit(25)
+      .populate("user")
+      .lean();
+    res.render("favorites", {
+      reviews,
+      isFavorites: true,
+    });
+  } catch (err) {
+    console.log(err);
+    res.render("error/500");
+  }
 });
 
 module.exports = router;

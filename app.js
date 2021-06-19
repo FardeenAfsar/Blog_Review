@@ -50,6 +50,7 @@ const {
   paginate,
   editBtn,
   deleteBtn,
+  deleteComment,
   formatDate,
   userNamePick,
 } = require("./helpers/hbs");
@@ -65,6 +66,7 @@ app.engine(
       paginate,
       editBtn,
       deleteBtn,
+      deleteComment,
       formatDate,
       userNamePick,
     },
