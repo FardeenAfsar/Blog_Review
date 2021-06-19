@@ -51,6 +51,7 @@ const {
   editBtn,
   deleteBtn,
   formatDate,
+  userNamePick,
 } = require("./helpers/hbs");
 
 // View engine
@@ -65,6 +66,7 @@ app.engine(
       editBtn,
       deleteBtn,
       formatDate,
+      userNamePick,
     },
     defaultLayout: "main",
     extname: ".hbs",

@@ -23,7 +23,7 @@
                 {{{deleteBtn user._id ../userId _id}}}
                 <small class="text-muted my-auto"> -
                     <a href="/user?u={{user._id}}" class="username-link">
-                        {{user.local.userName}}
+                        {{userNamePick user.local.userName user.google.userName}}
                     </a></small>
             </div>
         </div>

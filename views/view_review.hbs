@@ -4,7 +4,8 @@
             <h1 class="display-3">{{data.title}}</h1>
         </div>
         <h3 class="card-title profile-heading d-flex justify-content-end">
-            <a href="/user?u={{data.user._id}}" class="username-link">{{data.user.local.userName}}</a>
+            <a href="/user?u={{data.user._id}}" class="username-link">{{userNamePick data.user.local.userName
+                data.user.google.userName}}</a>
             <h6 class="d-flex justify-content-end">
                 <small class="text-muted">{{formatDate data.createdAt}}</small>
             </h6>
@@ -38,11 +39,12 @@
     <div class="col-12 d-flex flex-wrap">
         <div class="col-12 d-flex ms-2">
             <h3 class="profile-heading d-flex justify-content-start">
-                <a href="/user?u={{user._id}}" class="username-link">{{user.local.userName}}</a>
+                <a href="/user?u={{user._id}}" class="username-link">{{userNamePick user.local.userName
+                    user.google.userName}}</a>
             </h3>
             <small class="text-muted ms-2 align-self-end mb-2">{{formatDate postedAt}}</small>
         </div>
-        <div class="col ms-4 mt-2" style="color: #fafafa;">
+        <div class="col ms-4 mt-2 me-5" style="color: #fafafa;">
             <p>{{comment}}</p>
         </div>
         <div class="col-12">
