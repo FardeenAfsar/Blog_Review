@@ -35,10 +35,19 @@
 
             <hr class="mt-4" />
 
-            <a href="/auth/google" class="btn btn-outline-danger btn-lg" role="button">
-                <i class="fab fa-google fa-lg"></i>
-                <i class="fas fa-plus fa-lg"></i>
-            </a>
+            <div class="col-12 d-flex justify-content-center">
+                <a href="/auth/google" class="col-6 btn btn-outline-danger btn-lg ms-auto" role="button">
+                    <i class="fab fa-google fa-lg"></i>
+                    <i class="fas fa-plus fa-lg"></i>
+                </a>
+                <form action="/" method="POST" class="col-6 d-flex ms-auto">
+                    <input type="hidden" class="form-control" placeholder="Username" name="username" value="Guest">
+                    <input type="hidden" class="form-control" placeholder="Password" name="password" value="guest">
+                    <button type="submit" class="col-12 btn btn-block btn-outline-dark">Skip
+                        Login</button>
+                </form>
+            </div>
+
         </div>
     </div>
 
